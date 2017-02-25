@@ -1,0 +1,2 @@
+class MineSquare < Square
+end

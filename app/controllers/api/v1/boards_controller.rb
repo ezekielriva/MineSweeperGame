@@ -8,6 +8,7 @@ module Api
       def create
         @board = Board.new(board_params)
         @board.generate_squares
+        @board.drop_mines
         @board.save!
         render json: @board
       end
@@ -15,7 +16,7 @@ module Api
       private
 
       def board_params
-        params.require(:board).permit(:size_x, :size_y)
+        params.require(:board).permit(:size_x, :size_y, :no_mines)
       end
     end
   end
