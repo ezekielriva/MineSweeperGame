@@ -7,6 +7,7 @@ module Api
 
       def create
         @board = Board.new(board_params)
+        @board.generate_squares
         @board.save!
         render json: @board
       end

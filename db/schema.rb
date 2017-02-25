@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225174059) do
+ActiveRecord::Schema.define(version: 20170225181637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20170225174059) do
     t.integer  "size_y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "squares", force: :cascade do |t|
+    t.integer  "x"
+    t.integer  "y"
+    t.string   "type"
+    t.boolean  "opened",     default: false
+    t.integer  "near_mines", default: 0
+    t.integer  "board_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["board_id"], name: "index_squares_on_board_id", using: :btree
   end
 
 end

@@ -5,4 +5,11 @@ class BoardTest < ActiveSupport::TestCase
     board = Board.new(size_x: 1, size_y: 1)
     assert !board.valid?, "The board is valid."
   end
+
+  test 'its creates the squares' do
+    board = Board.new(size_x: 2, size_y: 2)
+    board.generate_squares
+
+    assert_equal board.squares.length, 4
+  end
 end

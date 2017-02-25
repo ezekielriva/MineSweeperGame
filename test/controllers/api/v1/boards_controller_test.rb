@@ -8,7 +8,10 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
 
   test "POST #create. It creates a new Board" do
     post api_v1_boards_url, params: { board: { size_x: 2, size_y: 2 } }
-    assert Board.where(size_x: 2, size_y: 2).exists?
+
+    last_board = Board.find_by(size_x: 2, size_y: 2)
+    assert last_board
+    assert_equal last_board.squares.count, (last_board.size_x * last_board.size_y)
     assert_response :success
   end
 
