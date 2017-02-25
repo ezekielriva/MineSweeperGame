@@ -6,6 +6,10 @@
     {
       "path": "/api/v1/status.{format}",
       "description": "Status"
+    },
+    {
+      "path": "/api/v1/boards.{format}",
+      "description": "Board"
     }
   ],
   "authorizations": null,

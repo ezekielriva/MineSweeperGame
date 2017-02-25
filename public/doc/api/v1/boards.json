@@ -1,0 +1,109 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "",
+  "resourcePath": "boards",
+  "apis": [
+    {
+      "path": "/api/v1/boards.json",
+      "operations": [
+        {
+          "summary": "List all boards",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "array",
+              "message": "Success"
+            }
+          ],
+          "nickname": "Api::V1::Boards#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/api/v1/boards.json",
+      "operations": [
+        {
+          "summary": "Creates a board",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Board",
+              "message": "Success"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "board[size_x]",
+              "type": "integer",
+              "description": "Board Size X",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "board[size_y]",
+              "type": "integer",
+              "description": "Board Size Y",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "board[no_mines]",
+              "type": "integer",
+              "description": "Number of Mines",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::Boards#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "BoardList": {
+      "id": "BoardList",
+      "required": [
+        "boards"
+      ],
+      "properties": {
+        "boards": {
+          "type": "array",
+          "description": "Board"
+        }
+      },
+      "description": "List of Boards"
+    },
+    "Board": {
+      "id": "Board",
+      "required": [
+        "id",
+        "size_x",
+        "size_y",
+        "no_mines"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": null
+        },
+        "sizeX": {
+          "type": "integer",
+          "description": null
+        },
+        "sizeY": {
+          "type": "integer",
+          "description": null
+        },
+        "noMines": {
+          "type": "integer",
+          "description": null
+        }
+      },
+      "description": "A Board object."
+    }
+  }
+}
