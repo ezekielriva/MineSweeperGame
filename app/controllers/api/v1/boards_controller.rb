@@ -6,11 +6,13 @@ module Api
       end
 
       def create
-        @board = Board.new(board_params)
-        @board.generate_squares
-        @board.drop_mines
-        @board.save!
-        render json: @board
+        Board.transaction do
+          @board = Board.create(board_params)
+          @board.generate_squares
+          @board.drop_mines
+          @board.fill_numbers
+          render json: @board
+        end
       end
 
       private

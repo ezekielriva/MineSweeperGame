@@ -15,7 +15,7 @@ class Board < ApplicationRecord
   def generate_squares
     size_x.times do |i|
       size_y.times do |j|
-        squares.build(x: i, y: j)
+        squares.create(x: i, y: j)
       end
     end
   end
@@ -25,7 +25,22 @@ class Board < ApplicationRecord
       x = rand(size_x)
       y = rand(size_y)
 
-      squares.find { |square| square.in_position(x,y) }.to_mine
+      squares.find_by(x: x, y: y).to_mine!
     end
+  end
+
+  def fill_numbers
+    mine_squares.each do |mine_square|
+      adjacents_to(mine_square).each do |square|
+        square.near_mines = adjacents_to(square).merge(mine_squares).count
+        square.save
+      end
+    end
+  end
+
+  def adjacents_to(center_square)
+    squares.where(x: (center_square.x - 1..center_square.x+1),
+                  y: (center_square.y-1..center_square.y+1))
+           .where.not(id: center_square)
   end
 end

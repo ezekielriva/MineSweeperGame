@@ -14,6 +14,7 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
     assert board
     assert_equal board.squares.count, (board.size_x * board.size_y), "The size does not match"
     assert_equal board.mine_squares.count, board.no_mines, "There is no mines"
+    assert_equal board.squares.where(near_mines: 0).count, board.no_mines, "There is no adjacent numbers"
     assert_response :success
   end
 
