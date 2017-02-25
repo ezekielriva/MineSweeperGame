@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: <%= ENV['DB_USERNAME'] %>
+  username: <%= ENV['DB_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: db/minesweeper_development
+
+test:
+  <<: *default
+  database: db/minesweeper_test
+
+production:
+  <<: *default
+  database: db/minesweeper_production

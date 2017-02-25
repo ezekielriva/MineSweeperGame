@@ -1,0 +1,19 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "",
+  "apis": [
+    {
+      "path": "/api/v1/status.{format}",
+      "description": "Status"
+    }
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "MineSweeperGame",
+    "description": "MineSweeper Game Api",
+    "contact": "ezerivadeneiral@gmail.com",
+    "license": "Apache 2.0",
+    "licenseUrl": "https://github.com/ezekielriva/MineSweeperGame/blob/master/LICENSE"
+  }
+}

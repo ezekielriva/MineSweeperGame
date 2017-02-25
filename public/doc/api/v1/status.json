@@ -1,0 +1,51 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "",
+  "resourcePath": "status",
+  "apis": [
+    {
+      "path": "/api/v1/status.json",
+      "operations": [
+        {
+          "summary": "Shows the current api status",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Status",
+              "message": "Success"
+            }
+          ],
+          "nickname": "Api::V1::Status#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "Status": {
+      "id": "Status",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": [
+            "ok",
+            "warning",
+            "error"
+          ],
+          "allowableValues": {
+            "valueType": "LIST",
+            "values": [
+
+            ]
+          }
+        }
+      },
+      "description": "A Status object."
+    }
+  }
+}
