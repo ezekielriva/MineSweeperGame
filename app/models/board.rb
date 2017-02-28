@@ -1,4 +1,5 @@
 class Board < ApplicationRecord
+  belongs_to :user
   has_many :squares
   has_many :mine_squares
 

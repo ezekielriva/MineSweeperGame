@@ -15,6 +15,10 @@ module Api
         description "A Status object."
         property_list :status, :string, :required, ["ok", "warning", "error"]
       end
+
+      def does_not_need_auth
+        true
+      end
     end
   end
 end

@@ -8,7 +8,7 @@ module Api
         response :ok, 'Success'
       end
       def index
-        render json: Board.all
+        render json: current_user.boards.all
       end
 
       swagger_api :create do
@@ -20,7 +20,7 @@ module Api
       end
       def create
         Board.transaction do
-          @board = Board.create(board_params)
+          @board = current_user.boards.create(board_params)
           @board.generate_squares
           @board.drop_mines
           @board.fill_numbers
