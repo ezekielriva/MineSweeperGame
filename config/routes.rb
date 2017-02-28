@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'status', to: 'status#show'
 
-      resources :boards, only: [:index, :create]
+      resources :boards, only: [:index, :create] do
+        resources :moves, only: [:index, :create]
+      end
       post 'registrations', to: 'registrations#create'
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228015033) do
+ActiveRecord::Schema.define(version: 20170228015503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20170228015033) do
     t.integer  "no_mines"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "board_id"
+    t.integer  "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_moves_on_board_id", using: :btree
   end
 
   create_table "squares", force: :cascade do |t|
@@ -56,4 +66,5 @@ ActiveRecord::Schema.define(version: 20170228015033) do
 
   add_foreign_key "api_keys", "users"
   add_foreign_key "boards", "users"
+  add_foreign_key "moves", "boards"
 end

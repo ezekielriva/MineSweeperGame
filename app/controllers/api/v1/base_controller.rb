@@ -6,11 +6,13 @@ module Api
       before_action :authenticate!
       rescue_from ActiveRecord::RecordInvalid,
                   ActiveRecord::RecordNotSaved, with: :unprocessable_entity
+      rescue_from Board::WinException,
+                  Board::LoseException, with: :endgame_response
 
       protected
 
       def unprocessable_entity(exception)
-        render json: exception, status: :unprocessable_entity
+        render json: { error: exception }, status: :unprocessable_entity
       end
 
       def authenticate!
@@ -22,6 +24,10 @@ module Api
 
       def current_user
         @current_user ||= User.find_by_token(@token)
+      end
+
+      def endgame_response(message)
+        render json: { message: message }, status: :ok
       end
 
       def does_not_need_auth

@@ -42,6 +42,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     concurrent-ruby (1.0.4)
+    database_cleaner (1.5.3)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
@@ -64,6 +65,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    minitest-around (0.4.0)
+      minitest (~> 5.0)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -127,8 +130,10 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  database_cleaner
   dotenv-rails
   listen (~> 3.0.5)
+  minitest-around
   pg
   puma (~> 3.0)
   rails (~> 5.0.1)

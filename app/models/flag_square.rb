@@ -1,0 +1,2 @@
+class FlagSquare < Square
+end
