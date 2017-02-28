@@ -8,8 +8,16 @@
       "description": "Status"
     },
     {
+      "path": "/api/v1/moves.{format}",
+      "description": "Moves"
+    },
+    {
       "path": "/api/v1/boards.{format}",
       "description": "Board"
+    },
+    {
+      "path": "/api/v1/registrations.{format}",
+      "description": "Users"
     }
   ],
   "authorizations": null,

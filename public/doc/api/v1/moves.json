@@ -2,13 +2,13 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "",
-  "resourcePath": "boards",
+  "resourcePath": "moves",
   "apis": [
     {
-      "path": "/api/v1/boards.json",
+      "path": "/api/v1/boards/{board_id}/moves.json",
       "operations": [
         {
-          "summary": "List all current user boards",
+          "summary": "List all boards moves",
           "responseMessages": [
             {
               "code": 200,
@@ -30,20 +30,20 @@
               "required": true
             }
           ],
-          "nickname": "Api::V1::Boards#index",
+          "nickname": "Api::V1::Moves#index",
           "method": "get"
         }
       ]
     },
     {
-      "path": "/api/v1/boards.json",
+      "path": "/api/v1/boards/{board_id}/moves.json",
       "operations": [
         {
-          "summary": "Creates a board",
+          "summary": "Creates a move & check game status",
           "responseMessages": [
             {
               "code": 200,
-              "responseModel": "Square",
+              "responseModel": "Board",
               "message": "Success"
             },
             {
@@ -62,81 +62,31 @@
             },
             {
               "paramType": "form",
-              "name": "board[size_x]",
+              "name": "move[x]",
               "type": "integer",
-              "description": "Board Size X",
+              "description": "Move X",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "board[size_y]",
+              "name": "move[y]",
               "type": "integer",
-              "description": "Board Size Y",
+              "description": "Move Y",
               "required": true
             },
             {
               "paramType": "form",
-              "name": "board[no_mines]",
+              "name": "move[board_id]",
               "type": "integer",
-              "description": "Number of Mines",
+              "description": "Board Id",
               "required": true
             }
           ],
-          "nickname": "Api::V1::Boards#create",
+          "nickname": "Api::V1::Moves#create",
           "method": "post"
         }
       ]
     }
   ],
-  "authorizations": null,
-  "models": {
-    "Board": {
-      "id": "Board",
-      "required": [
-        "id",
-        "size_x",
-        "size_y",
-        "no_mines",
-        "squares"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": null
-        },
-        "sizeX": {
-          "type": "integer",
-          "description": null
-        },
-        "sizeY": {
-          "type": "integer",
-          "description": null
-        },
-        "noMines": {
-          "type": "integer",
-          "description": null
-        },
-        "squares": {
-          "type": "array",
-          "description": {
-            "item": "Square"
-          }
-        }
-      },
-      "description": "A Board object."
-    },
-    "Square": {
-      "id": "Square",
-      "required": [
-        "id"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": null
-        }
-      },
-      "description": "A Square in a Board"
-    }
-  }
+  "authorizations": null
 }

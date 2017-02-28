@@ -1,0 +1,116 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "",
+  "resourcePath": "registrations",
+  "apis": [
+    {
+      "path": "/api/v1/registrations.json",
+      "operations": [
+        {
+          "summary": "Creates a move & check game status",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "User",
+              "message": "Success"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "users[username]",
+              "type": "string",
+              "description": "User username",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "users[email]",
+              "type": "string",
+              "description": "User email",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "users[first_name]",
+              "type": "string",
+              "description": "Users first name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "users[last_name]",
+              "type": "string",
+              "description": "Users last name",
+              "required": false
+            }
+          ],
+          "nickname": "Api::V1::Registrations#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "User": {
+      "id": "User",
+      "required": [
+        "id",
+        "username",
+        "api_key"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": null
+        },
+        "username": {
+          "type": "string",
+          "description": null
+        },
+        "email": {
+          "type": "string",
+          "description": null
+        },
+        "firstName": {
+          "type": "string",
+          "description": null
+        },
+        "lastName": {
+          "type": "string",
+          "description": null
+        },
+        "apiKey": {
+          "type": "ApiKey",
+          "description": null
+        }
+      },
+      "description": "A User object."
+    },
+    "ApiKey": {
+      "id": "ApiKey",
+      "required": [
+        "id",
+        "user_id",
+        "access_token"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": null
+        },
+        "userId": {
+          "type": "integer",
+          "description": null
+        },
+        "accessToken": {
+          "type": "string",
+          "description": null
+        }
+      },
+      "description": "The User ApiKey object."
+    }
+  }
+}
