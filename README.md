@@ -1,24 +1,17 @@
-# README
+# MineSweeper Game
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Requirements
+- ruby 2.3
+- postgresql
+- rails
 
-Things you may want to cover:
+# API status
+You can find the status here: https://fast-taiga-51538.herokuapp.com/api/v1/status
 
-* Ruby version
+# API doc
+You can find the doc here: https://fast-taiga-51538.herokuapp.com/doc
 
-* System dependencies
+# Testing
+To run the test suite just run the follow command:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`bundle exec rake test`
